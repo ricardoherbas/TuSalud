@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Iniciá sesión en TuSalud y organizá tus documentos médicos.">
+    <title>Iniciar sesión | TuSalud</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="pagina-auth">
+    <main class="auth-contenedor">
+        <section class="auth-presentacion">
+            <a class="logo" href="./index.html" aria-label="TuSalud, inicio">
+                <span class="logo__icono" aria-hidden="true">+</span>
+                <span>TuSalud</span>
+            </a>
+            <div class="auth-presentacion__contenido">
+                <span class="auth-etiqueta">TU SALUD, EN UN SOLO LUGAR</span>
+                <h1>Tu información médica, siempre organizada.</h1>
+                <p>Accedé a tus estudios, análisis e informes médicos desde un único lugar, de forma sencilla y ordenada.</p>
+                <div class="auth-beneficio">
+                    <span class="auth-beneficio__icono" aria-hidden="true">✓</span>
+                    <span>Todos tus documentos médicos organizados.</span>
+                </div>
+                <div class="auth-beneficio">
+                    <span class="auth-beneficio__icono" aria-hidden="true">✓</span>
+                    <span>Acceso práctico a tu información personal.</span>
+                </div>
+            </div>
+            <p class="auth-presentacion__pie">TuSalud · Tu información, a tu alcance.</p>
+        </section>
+        <section class="auth-formulario" aria-labelledby="titulo-login">
+            <div class="auth-formulario__contenido">
+                <div class="auth-formulario__encabezado">
+                    <span class="auth-icono" aria-hidden="true">♥</span>
+                    <h2 id="titulo-login">¡Qué bueno verte!</h2>
+                    <p>Ingresá a tu cuenta para continuar.</p>
+                </div>
+                <form id="form-login">
+                    <div class="campo">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" autocomplete="email" maxlength="255" required>
+                    </div>
+                    <div class="campo">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" autocomplete="current-password" required>
+                    </div>
+                    <p id="mensaje-login" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
+                    <button type="submit" id="boton-login" class="boton-principal">Iniciar sesión</button>
+                </form>
+                <p class="auth-alternativa">¿Todavía no tenés una cuenta? <a href="./pages/registro.html">Crear cuenta</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
+

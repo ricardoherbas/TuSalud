@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Consultá y organizá tus documentos médicos en TuSalud.">
+    <title>Documentos médicos | TuSalud</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="pagina-documentos">
+    <header class="encabezado">
+        <a class="logo" href="./categorias.html" aria-label="TuSalud, categorías médicas">
+            <span class="logo__icono" aria-hidden="true">+</span>
+            <span>TuSalud</span>
+        </a>
+        <div class="encabezado__usuario">
+            <span id="nombre-usuario"></span>
+            <button type="button" id="boton-cerrar-sesion">Cerrar sesión</button>
+        </div>
+    </header>
+    <main class="documentos-contenedor">
+        <nav aria-label="Navegación">
+            <button type="button" id="boton-volver">← Volver a las secciones</button>
+        </nav>
+        <section class="documentos-encabezado">
+            <p id="nombre-categoria"></p>
+            <h1 id="nombre-seccion">Documentos médicos</h1>
+            <p id="descripcion-seccion">Consultá y organizá tus archivos médicos.</p>
+        </section>
+        <section class="documentos-subida" aria-labelledby="titulo-subida">
+            <h2 id="titulo-subida">Agregar un documento</h2>
+            <form id="form-documento">
+                <div class="campo">
+                    <label for="archivo-documento">Seleccioná un archivo</label>
+                    <input type="file" id="archivo-documento" name="archivo" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+                    <p>Formatos admitidos: PDF, JPG y PNG.</p>
+                </div>
+                <div class="campo">
+                    <label for="nombre-documento">Nombre del documento</label>
+                    <input type="text" id="nombre-documento" name="nombre" maxlength="200" placeholder="Ej.: Análisis de sangre de octubre" required>
+                </div>
+                <div class="campo">
+                    <label for="fecha-documento">Fecha del documento</label>
+                    <input type="date" id="fecha-documento" name="fecha">
+                </div>
+                <p id="mensaje-documento" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
+                <button type="submit" id="boton-subir-documento">Guardar documento</button>
+            </form>
+        </section>
+        <section class="documentos-listado" aria-labelledby="titulo-listado">
+            <h2 id="titulo-listado">Mis documentos</h2>
+            <div id="lista-documentos" aria-live="polite">
+                <p>Cargando documentos...</p>
+            </div>
+        </section>
+    </main>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/documentos.js"></script>
+</body>
+</html>
