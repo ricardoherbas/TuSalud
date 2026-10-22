@@ -33,17 +33,25 @@
             <h2 id="titulo-subida">Agregar un documento</h2>
             <form id="form-documento">
                 <div class="campo">
-                    <label for="archivo-documento">Seleccioná un archivo</label>
-                    <input type="file" id="archivo-documento" name="archivo" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
-                    <p>Formatos admitidos: PDF, JPG y PNG.</p>
-                </div>
-                <div class="campo">
-                    <label for="nombre-documento">Nombre del documento</label>
+                    <label for="nombre-documento">Nombre del documento *</label>
                     <input type="text" id="nombre-documento" name="nombre" maxlength="200" placeholder="Ej.: Análisis de sangre de octubre" required>
                 </div>
                 <div class="campo">
-                    <label for="fecha-documento">Fecha del documento</label>
-                    <input type="date" id="fecha-documento" name="fecha">
+                    <label for="fecha-documento">Fecha del documento *</label>
+                    <input type="date" id="fecha-documento" name="fecha" required>
+                </div>
+                <div class="campo">
+                    <label for="institucion-documento">Institución médica (opcional)</label>
+                    <input type="text" id="institucion-documento" name="institucion" maxlength="200" placeholder="Ej.: Hospital Municipal">
+                </div>
+                <div class="campo">
+                    <label for="profesional-documento">Profesional de salud (opcional)</label>
+                    <input type="text" id="profesional-documento" name="profesional" maxlength="200" placeholder="Ej.: Dra. María González">
+                </div>
+                <div class="campo">
+                    <label for="archivo-documento">Seleccioná un archivo *</label>
+                    <input type="file" id="archivo-documento" name="archivo" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+                    <p>Formatos admitidos: PDF, JPG y PNG.</p>
                 </div>
                 <p id="mensaje-documento" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
                 <button type="submit" id="boton-subir-documento">Guardar documento</button>
