@@ -26,10 +26,7 @@ body.pagina-documentos {
     margin: 0;
     min-height: 100vh;
     color: var(--color-texto);
-    background:
-        radial-gradient(ellipse at top left, #e0ebff 0, transparent 32rem),
-        radial-gradient(ellipse at bottom right, #e2f8f5 0, transparent 30rem),
-        var(--color-fondo);
+    background: radial-gradient(ellipse at top left, #e0ebff 0, transparent 32rem), radial-gradient(ellipse at bottom right, #e2f8f5 0, transparent 30rem), var(--color-fondo);
     font-family: Inter, "Segoe UI", Arial, sans-serif;
     font-size: 15px;
     line-height: 1.5;
@@ -44,7 +41,7 @@ body.pagina-documentos {
     cursor: pointer;
 }
 .encabezado {
-    width: min(100% - 32px, 1080px);
+    width: min(calc(100% - 32px), 1080px);
     margin: 20px auto 24px;
     padding: 14px 20px;
     display: flex;
@@ -108,7 +105,7 @@ body.pagina-documentos {
     transform: translateY(-1px);
 }
 .documentos-contenedor {
-    width: min(100% - 32px, 1080px);
+    width: min(calc(100% - 32px), 1080px);
     margin: 0 auto 40px;
 }
 .documentos-contenedor nav {
@@ -420,4 +417,3 @@ body.pagina-documentos {
         animation-duration: 0.01ms !important;
     }
 }
-
