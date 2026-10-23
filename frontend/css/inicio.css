@@ -2,39 +2,37 @@
    INICIO - MENÚ PRINCIPAL
 ======================================== */
 
-/* Paleta de colores del menú principal */
-
-:root {
-    --color-fondo: #EDF5FD;
-    --color-fondo-encabezado: #204D78;
-    --color-fondo-logo: #1877C9;
-    --color-fondo-tarjeta: #FFFFFF;
-    --color-fondo-tarjeta-secundario: #F4F9FF;
-    --color-fondo-icono: #E3F2FF;
-    --color-fondo-pie: #E2EFFC;
-
-    --color-primario-oscuro: #e2e6ea;
-    --color-primario: #e2eaf1;
-    --color-primario-hover: #125FA3;
-    --color-primario-claro: #38BDF8;
-
-    --color-texto: #f1f3f6;
-    --color-texto-secundario: #e0e5ea;
-    --color-texto-terciario: #dce3ea;
-    --color-texto-blanco: #FFFFFF;
-
-    --color-borde: #D2E4F7;
-    --color-borde-encabezado: #163B60;
-    --color-borde-tarjeta-hover: #7CB8EB;
-    --color-borde-icono: #D2E8FC;
-
-    --color-sombra-tarjeta: rgb(32 77 120 / 7%);
-    --color-sombra-tarjeta-hover: rgb(32 77 120 / 12%);
-}
-
-/* Contenedor principal */
+/* Paleta exclusiva de la página de inicio */
 
 body:has(.menu-principal) {
+    --color-fondo: #EAF3FA;
+    --color-fondo-encabezado: #102B46;
+    --color-borde-encabezado: #294B6A;
+    --color-fondo-logo: #087E9B;
+    --color-fondo-pie: #102B46;
+
+    --color-primario: #006B88;
+    --color-primario-hover: #004F68;
+    --color-primario-oscuro: #102B46;
+    --color-primario-claro: #8AD9EC;
+    --color-primario-resaltado: #00A6C7;
+
+    --color-texto: #182D42;
+    --color-texto-blanco: #FFFFFF;
+    --color-texto-secundario: #435C73;
+    --color-texto-terciario: #61788D;
+
+    --color-borde: #B6CCDE;
+    --color-borde-tarjeta-hover: #006B88;
+    --color-borde-icono: #8FB8D0;
+
+    --color-fondo-tarjeta: #FFFFFF;
+    --color-fondo-tarjeta-secundario: #E2F0F9;
+    --color-sombra-tarjeta: rgba(16, 43, 70, 0.12);
+    --color-sombra-tarjeta-hover: rgba(16, 43, 70, 0.22);
+
+    --color-fondo-icono: #CBE7F4;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -43,6 +41,7 @@ body:has(.menu-principal) {
     color: var(--color-texto);
     overflow-x: hidden;
 }
+/* Contenedor principal */
 
 body:has(.menu-principal) *,
 body:has(.menu-principal) *::before,
@@ -353,4 +352,85 @@ body:has(.menu-principal) .pie-principal p {
     .tarjeta-menu:hover {
         transform: none;
     }
+}
+
+
+/* Botón Cerrar sesión: azul suave */
+body:has(.menu-principal) #boton-cerrar-sesion {
+    background-color: #C9E3F2;
+    color: #102B46;
+    border: 1px solid #8FB8D0;
+    font-weight: 700;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+body:has(.menu-principal) #boton-cerrar-sesion:hover {
+    background-color: #A9D2E8;
+    border-color: #619CB9;
+    color: #102B46;
+}
+
+body:has(.menu-principal) #boton-cerrar-sesion:focus-visible {
+    outline: 3px solid #006B88;
+    outline-offset: 3px;
+}
+
+/* Etiqueta de bienvenida */
+body:has(.menu-principal) .auth-etiqueta {
+    background-color: #C9EAF5;
+    color: #004F68;
+    border: 1px solid #8AD9EC;
+    font-weight: 800;
+}
+
+/* Tarjetas: fondo blanco y borde más visible */
+body:has(.menu-principal) .tarjeta-menu {
+    background-color: #FFFFFF;
+    border: 1px solid #8FB8D0;
+    box-shadow: 0 5px 14px rgba(16, 43, 70, 0.14);
+}
+
+/* Tarjetas al pasar el cursor */
+body:has(.menu-principal) .tarjeta-menu:hover {
+    border-color: #006B88;
+    background: linear-gradient(145deg, #FFFFFF 0%, #D5EBF7 100%);
+    box-shadow: 0 12px 28px rgba(16, 43, 70, 0.22);
+}
+
+/* Iconos de las tarjetas */
+body:has(.menu-principal) .tarjeta-menu__icono {
+    background-color: #B8DFEF;
+    border: 1px solid #619CB9;
+    color: #004F68;
+}
+
+/* Títulos */
+body:has(.menu-principal) .tarjeta-menu h2 {
+    color: #102B46;
+}
+
+/* Descripciones */
+body:has(.menu-principal) .tarjeta-menu p {
+    color: #435C73;
+}
+
+/* Etiquetas de acción de las tarjetas */
+body:has(.menu-principal) .tarjeta-menu__accion {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #006B88;
+    color: #FFFFFF;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+}
+
+body:has(.menu-principal) .tarjeta-menu:hover .tarjeta-menu__accion {
+    background-color: #004F68;
+    color: #FFFFFF;
+}
+body:has(.menu-principal) .pie-principal p {
+    color: #FFFFFF;
 }

@@ -1,4 +1,5 @@
-/* Estilos compartidos y páginas de TuSalud */
+/* Estilos compartidos y paletas de colores de TuSalud */
+
 @import url("./login.css");
 @import url("./registro.css");
 @import url("./inicio.css");
@@ -6,3 +7,4 @@
 @import url("./documentos.css");
 @import url("./guardar-tratamiento.css");
 @import url("./mis-tratamientos.css");
+

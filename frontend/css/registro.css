@@ -1,47 +1,34 @@
+
 /* =========================================
    TuSalud - Registro de usuario
    Archivo: css/registro.css
-   ========================================= */
+========================================= */
 
-/* Paleta de colores del registro */
+/* Paleta de colores exclusiva del registro */
 
-:root {
-    --registro-color-fondo: #0B1F33;
-    --registro-color-fondo-secundario: #102943;
-    --registro-color-fondo-panel: #173653;
-    --registro-color-tarjeta: #1E3A5F;
-    --registro-color-tarjeta-secundaria: #2A4B7A;
-    --registro-color-tarjeta-hover: #315982;
-    --registro-color-primario: #3B82F6;
-    --registro-color-primario-hover: #2563EB;
-    --registro-color-secundario: #14B8A6;
-    --registro-color-acento: #22D3EE;
-    --registro-color-texto: #FFFFFF;
-    --registro-color-texto-secundario: #CBD5E1;
-    --registro-color-texto-terciario: #94A3B8;
-    --registro-color-texto-oscuro: #0B1F33;
-    --registro-color-borde: #385779;
-    --registro-color-borde-hover: #60A5FA;
-    --registro-color-fondo-input: #122D49;
-    --registro-color-borde-input: #3B5F83;
-    --registro-color-input-focus: #22D3EE;
-    --registro-color-exito: #22C55E;
-    --registro-color-fondo-exito: #123D35;
-    --registro-color-borde-exito: #16805D;
-    --registro-color-error: #F87171;
-    --registro-color-fondo-error: #421F2A;
-    --registro-color-borde-error: #9F3545;
-    --registro-color-advertencia: #FBBF24;
-    --registro-color-fondo-advertencia: #45351A;
-    --registro-color-borde-advertencia: #926B22;
-    --registro-sombra-tarjeta: 0 8px 24px rgba(0, 0, 0, 0.20);
-    --registro-sombra-hover: 0 12px 30px rgba(0, 0, 0, 0.30);
-    --registro-sombra-enfoque: 0 0 0 3px rgba(34, 211, 238, 0.22);
-    --registro-radio-pequeno: 8px;
-    --registro-radio-medio: 12px;
-    --registro-radio-grande: 16px;
-    --registro-radio-extra-grande: 20px;
-    --registro-transicion-rapida: 180ms ease;
+.pagina-auth:has(#form-registro) {
+    --registro-color-fondo: #EAF3FA;
+    --registro-color-fondo-panel: #FFFFFF;
+    --registro-color-fondo-secundario: #F2F8FC;
+    --registro-color-tarjeta: #102B46;
+    --registro-color-primario: #006B88;
+    --registro-color-primario-hover: #004F68;
+    --registro-color-acento: #8AD9EC;
+    --registro-color-texto: #182D42;
+    --registro-color-texto-secundario: #435C73;
+    --registro-color-texto-terciario: #61788D;
+    --registro-color-texto-blanco: #FFFFFF;
+    --registro-color-borde: #B6CCDE;
+    --registro-color-borde-input: #829FB8;
+    --registro-color-borde-hover: #527D9F;
+    --registro-color-input-focus: #006B88;
+    --registro-color-fondo-input: #F8FBFE;
+    --registro-color-error: #942637;
+    --registro-color-fondo-error: #FFF0F1;
+    --registro-color-borde-error: #D78B96;
+    --registro-sombra-tarjeta: 0 5px 16px rgba(16, 43, 70, 0.14);
+    --registro-sombra-hover: 0 10px 24px rgba(16, 43, 70, 0.22);
+    --registro-sombra-enfoque: 0 0 0 4px rgba(0, 107, 136, 0.20);
 }
 
 /* Panel de presentación */
@@ -49,28 +36,31 @@
 .pagina-auth:has(#form-registro) .auth-presentacion {
     background: linear-gradient(
         145deg,
-        var(--registro-color-tarjeta) 0%,
-        var(--registro-color-primario) 65%,
-        var(--registro-color-acento) 100%
+        #102B46 0%,
+        #005A78 65%,
+        #004F68 100%
     );
-    color: var(--registro-color-texto);
+    color: var(--registro-color-texto-blanco);
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;
 }
 
 .pagina-auth:has(#form-registro) .logo__icono {
-    color: var(--registro-color-primario);
+    color: var(--registro-color-texto-blanco);
+    background: var(--registro-color-primario);
 }
 
 .pagina-auth:has(#form-registro) .auth-etiqueta {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    background: rgba(16, 43, 70, 0.55);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Encabezado y formulario de registro */
 
 .pagina-auth:has(#form-registro) .auth-formulario {
+    color: var(--registro-color-texto);
     background: var(--registro-color-fondo-panel);
     min-width: 0;
     max-width: 100%;
@@ -83,7 +73,9 @@
     margin-inline: auto;
 }
 
-#form-registro {
+/* Formulario */
+
+.pagina-auth:has(#form-registro) #form-registro {
     display: flex;
     flex-direction: column;
     gap: 17px;
@@ -92,7 +84,7 @@
     max-width: 100%;
 }
 
-#form-registro .campo {
+.pagina-auth:has(#form-registro) #form-registro .campo {
     display: flex;
     flex-direction: column;
     gap: 7px;
@@ -101,7 +93,7 @@
     max-width: 100%;
 }
 
-#form-registro .campo label {
+.pagina-auth:has(#form-registro) #form-registro .campo label {
     color: var(--registro-color-texto);
     font-size: 0.9rem;
     font-weight: 700;
@@ -110,7 +102,7 @@
 
 /* Campos de entrada */
 
-#form-registro .campo input {
+.pagina-auth:has(#form-registro) #form-registro .campo input {
     box-sizing: border-box;
     width: 100%;
     min-width: 0;
@@ -130,22 +122,22 @@
         background-color 180ms ease;
 }
 
-#form-registro .campo input::placeholder {
+.pagina-auth:has(#form-registro) #form-registro .campo input::placeholder {
     color: var(--registro-color-texto-terciario);
     opacity: 1;
 }
 
-#form-registro .campo input:hover {
+.pagina-auth:has(#form-registro) #form-registro .campo input:hover {
     border-color: var(--registro-color-borde-hover);
 }
 
-#form-registro .campo input:focus {
+.pagina-auth:has(#form-registro) #form-registro .campo input:focus {
     background: var(--registro-color-fondo-secundario);
     border-color: var(--registro-color-input-focus);
     box-shadow: var(--registro-sombra-enfoque);
 }
 
-#form-registro .campo input:disabled {
+.pagina-auth:has(#form-registro) #form-registro .campo input:disabled {
     cursor: not-allowed;
     background: var(--registro-color-fondo);
     opacity: 0.7;
@@ -153,7 +145,7 @@
 
 /* Botón de crear cuenta */
 
-#boton-registro {
+.pagina-auth:has(#form-registro) #boton-registro {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
@@ -164,7 +156,7 @@
     max-width: 100%;
     min-height: 51px;
     padding: 13px 20px;
-    color: var(--registro-color-texto);
+    color: #FFFFFF;
     font-family: inherit;
     font-size: 0.98rem;
     font-weight: 750;
@@ -172,7 +164,7 @@
     overflow-wrap: anywhere;
     cursor: pointer;
     background: var(--registro-color-primario);
-    border: 0;
+    border: 1px solid var(--registro-color-primario);
     border-radius: 14px;
     box-shadow: var(--registro-sombra-tarjeta);
     transition:
@@ -181,22 +173,24 @@
         background-color 180ms ease;
 }
 
-#boton-registro:hover:not(:disabled) {
+.pagina-auth:has(#form-registro) #boton-registro:hover:not(:disabled) {
+    color: #FFFFFF;
     background: var(--registro-color-primario-hover);
+    border-color: var(--registro-color-primario-hover);
     box-shadow: var(--registro-sombra-hover);
     transform: translateY(-2px);
 }
 
-#boton-registro:active:not(:disabled) {
+.pagina-auth:has(#form-registro) #boton-registro:active:not(:disabled) {
     transform: translateY(0);
 }
 
-#boton-registro:focus-visible {
+.pagina-auth:has(#form-registro) #boton-registro:focus-visible {
     outline: 3px solid var(--registro-color-acento);
     outline-offset: 4px;
 }
 
-#boton-registro:disabled {
+.pagina-auth:has(#form-registro) #boton-registro:disabled {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
@@ -205,7 +199,7 @@
 
 /* Mensajes de validación y errores */
 
-#mensaje-registro {
+.pagina-auth:has(#form-registro) #mensaje-registro {
     box-sizing: border-box;
     width: 100%;
     min-width: 0;
@@ -221,7 +215,7 @@
     border-radius: 12px;
 }
 
-#mensaje-registro[hidden] {
+.pagina-auth:has(#form-registro) #mensaje-registro[hidden] {
     display: none !important;
 }
 
@@ -233,7 +227,7 @@
 }
 
 .pagina-auth:has(#form-registro) .auth-alternativa a {
-    color: var(--registro-color-acento);
+    color: var(--registro-color-primario);
     font-weight: 700;
     text-decoration: none;
     overflow-wrap: anywhere;
@@ -241,13 +235,19 @@
 }
 
 .pagina-auth:has(#form-registro) .auth-alternativa a:hover {
-    color: var(--registro-color-borde-hover);
+    color: var(--registro-color-primario-hover);
     text-decoration: underline;
+}
+
+.pagina-auth:has(#form-registro) .auth-alternativa a:focus-visible {
+    outline: 3px solid var(--registro-color-acento);
+    outline-offset: 3px;
+    border-radius: 3px;
 }
 
 /* =========================================
    Adaptación para tablets
-   ========================================= */
+========================================= */
 
 @media (max-width: 900px) {
     .pagina-auth:has(#form-registro) .auth-formulario {
@@ -258,14 +258,14 @@
         max-width: 460px;
     }
 
-    #form-registro {
+    .pagina-auth:has(#form-registro) #form-registro {
         gap: 17px;
     }
 }
 
 /* =========================================
    Adaptación para celulares
-   ========================================= */
+========================================= */
 
 @media (max-width: 600px) {
     .pagina-auth:has(#form-registro) .auth-presentacion {
@@ -293,16 +293,16 @@
         overflow-wrap: anywhere;
     }
 
-    #form-registro {
+    .pagina-auth:has(#form-registro) #form-registro {
         gap: 16px;
     }
 
-    #form-registro .campo input {
+    .pagina-auth:has(#form-registro) #form-registro .campo input {
         min-height: 49px;
         padding: 12px;
     }
 
-    #boton-registro {
+    .pagina-auth:has(#form-registro) #boton-registro {
         min-height: 51px;
         padding-inline: 14px;
     }
@@ -324,11 +324,11 @@
         padding: 22px 16px;
     }
 
-    #form-registro .campo input {
+    .pagina-auth:has(#form-registro) #form-registro .campo input {
         padding-inline: 10px;
     }
 
-    #boton-registro {
+    .pagina-auth:has(#form-registro) #boton-registro {
         padding-inline: 10px;
         font-size: 0.92rem;
     }

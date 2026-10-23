@@ -1,56 +1,57 @@
+
 /* =========================================
    TuSalud - Inicio de sesión
    Archivo: css/login.css
 ========================================= */
 
-/* Paleta de colores de inicio de sesión */
+/* Paleta de colores de la página */
 
-:root {
-    --color-fondo: #EDF5FD;
+.pagina-auth {
+    --color-fondo: #EAF3FA;
+    --color-resplandor-secundario: rgba(0, 166, 199, 0.12);
     --color-fondo-panel: #FFFFFF;
-    --color-fondo-input: #F4F9FF;
-    --color-fondo-input-deshabilitado: #EAF1F8;
+    --color-borde: #B6CCDE;
+    --color-sombra-contenedor: rgba(16, 43, 70, 0.18);
+    --color-sombra-contenedor-movil: rgba(16, 43, 70, 0.12);
 
-    --color-primario-oscuro: #204D78;
-    --color-primario-intermedio: #24659C;
-    --color-primario: #1877C9;
-    --color-primario-hover: #125FA3;
-    --color-primario-claro: #7CC4F4;
+    --color-primario-oscuro: #102B46;
+    --color-primario-intermedio: #005A78;
+    --color-primario: #006B88;
+    --color-primario-hover: #004F68;
+    --color-primario-claro: #8AD9EC;
 
-    --color-texto: #334155;
-    --color-texto-primario: #204D78;
-    --color-texto-secundario: #526D89;
-    --color-texto-terciario: #7890A8;
+    --color-texto: #182D42;
+    --color-texto-primario: #182D42;
     --color-texto-blanco: #FFFFFF;
-    --color-texto-presentacion: #EAF4FF;
-    --color-texto-pie: #DCEBFA;
+    --color-texto-secundario: #435C73;
+    --color-texto-terciario: #61788D;
+    --color-texto-presentacion: #E2F0F8;
+    --color-texto-pie: #FFFFFF;
 
-    --color-borde: #D2E4F7;
-    --color-borde-hover: #A9CBEA;
-    --color-borde-etiqueta: rgba(255, 255, 255, 0.24);
-    --color-borde-beneficio: rgba(255, 255, 255, 0.18);
     --color-borde-decorativo: rgba(255, 255, 255, 0.16);
+    --color-fondo-decorativo: rgba(138, 217, 236, 0.10);
+    --color-fondo-decorativo-secundario: rgba(0, 166, 199, 0.12);
 
-    --color-fondo-etiqueta: rgba(255, 255, 255, 0.13);
-    --color-fondo-beneficio: rgba(255, 255, 255, 0.10);
-    --color-fondo-decorativo: rgba(255, 255, 255, 0.06);
-    --color-fondo-decorativo-secundario: rgba(255, 255, 255, 0.05);
+    --color-fondo-etiqueta: rgba(16, 43, 70, 0.42);
+    --color-borde-etiqueta: rgba(255, 255, 255, 0.4);
 
-    --color-texto-beneficio-icono: #14532D;
-    --color-fondo-beneficio-icono: #BBF7D0;
+    --color-fondo-beneficio: rgba(255, 255, 255, 0.09);
+    --color-borde-beneficio: rgba(255, 255, 255, 0.22);
+    --color-texto-beneficio-icono: #102B46;
+    --color-fondo-beneficio-icono: #8AD9EC;
 
-    --color-error: #B42318;
-    --color-fondo-error: #FFF1F0;
-    --color-borde-error: #FECACA;
+    --color-sombra-logo: rgba(16, 43, 70, 0.20);
+    --color-sombra-icono: rgba(0, 107, 136, 0.22);
+    --color-sombra-icono-hover: rgba(0, 107, 136, 0.30);
 
-    --color-resplandor-primario: rgba(24, 119, 201, 0.12);
-    --color-resplandor-secundario: rgba(24, 119, 201, 0.10);
-    --color-sombra-contenedor: rgba(32, 77, 120, 0.12);
-    --color-sombra-contenedor-movil: rgba(32, 77, 120, 0.08);
-    --color-sombra-logo: rgba(15, 23, 42, 0.12);
-    --color-sombra-icono: rgba(24, 119, 201, 0.20);
-    --color-sombra-icono-hover: rgba(24, 119, 201, 0.28);
-    --color-enfoque-input: rgba(24, 119, 201, 0.12);
+    --color-fondo-input: #F8FBFE;
+    --color-fondo-input-deshabilitado: #E5EDF4;
+    --color-borde-hover: #527D9F;
+    --color-enfoque-input: rgba(0, 107, 136, 0.20);
+
+    --color-error: #942637;
+    --color-fondo-error: #FFF0F1;
+    --color-borde-error: #D78B96;
 }
 
 /* Contenedor de la página */

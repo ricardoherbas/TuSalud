@@ -4,58 +4,79 @@
 ======================================== */
 
 :root {
-    --color-fondo: #EDF5FD;
-    --color-fondo-encabezado: #204D78;
-    --color-fondo-logo: #38BDF8;
-    --color-fondo-panel: #FFFFFF;
-    --color-fondo-panel-secundario: #E8F3FD;
-    --color-fondo-boton-volver: #E1EFFD;
-    --color-fondo-boton-volver-hover: #D2E7FA;
-    --color-fondo-archivo: #EAF4FE;
-    --color-fondo-boton-archivo: #D2E7FA;
-    --color-fondo-boton-archivo-hover: #B9D9F5;
-    --color-fondo-mensaje-error: #FEF2F2;
-    --color-fondo-mensaje-exito: #F0FDF4;
-    --color-fondo-mensaje-vacio: #E4F0FC;
-    --color-fondo-boton-documento: #DCEBFA;
-    --color-fondo-boton-documento-hover: #C9E1F8;
-    --color-fondo-resumen: #E1EFFD;
-    --color-fondo-modal-encabezado: #EAF4FE;
-    --color-fondo-controles: #EDF5FD;
-    --color-fondo-boton-modal-hover: #DCEBFA;
-    --color-fondo-aviso-qr: #FFFBEB;
+    /* Fondo general */
+    --color-fondo: #F0F7FC;
+    --color-fondo-encabezado: #102F50;
+    --color-borde-encabezado: #244B70;
+    --color-fondo-logo: #008FA8;
+    --color-fondo-pie: #102F50;
 
-    --color-primario-oscuro: #204D78;
-    --color-primario: #1877C9;
-    --color-primario-hover: #125FA3;
-    --color-primario-claro: #7DD3FC;
-    --color-primario-resaltado: #60A5FA;
+    /* Colores principales */
+    --color-primario: #007F9E;
+    --color-primario-hover: #005F79;
+    --color-primario-oscuro: #102F50;
+    --color-primario-claro: #80E4F2;
+    --color-primario-resaltado: #00B8D9;
 
-    --color-texto: #334155;
-    --color-texto-secundario: #526D89;
-    --color-texto-terciario: #647D96;
+    /* Textos */
+    --color-texto: #172B40;
+    --color-texto-secundario: #425C73;
+    --color-texto-terciario: #617A91;
     --color-texto-blanco: #FFFFFF;
-    --color-texto-input: #1E293B;
-    --color-texto-error: #B91C1C;
     --color-texto-exito: #166534;
-    --color-texto-aviso: #92400E;
+    --color-texto-error: #A61B2B;
+    --color-texto-aviso: #75430A;
 
-    --color-borde: #D2E4F7;
-    --color-borde-encabezado: #315F8C;
-    --color-borde-claro: #93C5FD;
-    --color-borde-input: #B6D0E8;
-    --color-borde-boton: #B6D5F2;
-    --color-borde-hover: #83B7E8;
-    --color-borde-archivo: #8FB6DC;
-    --color-borde-mensaje-error: #FECACA;
-    --color-borde-mensaje-exito: #BBF7D0;
-    --color-borde-mensaje-vacio: #A9CBEA;
-    --color-borde-aviso-qr: #FDE68A;
+    /* Bordes */
+    --color-borde: #C4D8E8;
+    --color-borde-claro: #52718B;
+    --color-borde-hover: #007F9E;
+    --color-borde-boton: #A9C8DE;
+    --color-borde-input: #A9C8DE;
+    --color-borde-archivo: #80BBD0;
 
-    --color-sombra-panel: rgb(32 77 120 / 7%);
-    --color-sombra-modal: rgb(15 23 42 / 25%);
-    --color-fondo-modal: rgb(15 23 42 / 55%);
-    --color-enfoque-input: rgb(24 119 201 / 13%);
+    /* Paneles principales */
+    --color-fondo-panel: #FFFFFF;
+    --color-fondo-panel-secundario: #E8F4FB;
+
+    /* Formularios */
+    --color-fondo-input: #F7FBFE;
+    --color-texto-input: #172B40;
+    --color-enfoque-input: rgba(0, 127, 158, 0.20);
+
+    /* Archivos y botones de archivo */
+    --color-fondo-archivo: #E4F3FA;
+    --color-fondo-boton-archivo: #D0EAF6;
+    --color-fondo-boton-archivo-hover: #B8DFF0;
+
+    /* Botones secundarios */
+    --color-fondo-boton-volver: #FFFFFF;
+    --color-fondo-boton-volver-hover: #DDF3FA;
+    --color-fondo-boton-documento: #E5F3FA;
+    --color-fondo-boton-documento-hover: #CDEAF6;
+
+    /* Resúmenes de documentos */
+    --color-fondo-resumen: #EAF6FC;
+
+    /* Mensajes */
+    --color-borde-mensaje-error: #E6A6AD;
+    --color-fondo-mensaje-error: #FFF0F1;
+    --color-borde-mensaje-vacio: #9BCDDD;
+    --color-fondo-mensaje-vacio: #E7F6FC;
+
+    /* Sombras */
+    --color-sombra-panel: rgba(16, 47, 80, 0.10);
+    --color-sombra-modal: rgba(5, 28, 49, 0.35);
+
+    /* Visor de documentos */
+    --color-fondo-modal: rgba(5, 28, 49, 0.72);
+    --color-fondo-modal-encabezado: #E2F2FA;
+    --color-fondo-controles: #D9EDF8;
+
+    /* Código QR */
+    --color-fondo-qr: #FFFFFF;
+    --color-borde-aviso-qr: #A9D5E7;
+    --color-fondo-aviso-qr: #E5F4FB;
 }
 
 .pagina-documentos {

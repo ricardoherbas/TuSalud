@@ -3,52 +3,54 @@
    Paleta: celeste claro y azul marino
 ======================================== */
 
-/* Paleta de colores */
-
-:root {
-    --color-fondo: #EDF5FD;
-    --color-fondo-encabezado: #204D78;
-    --color-fondo-logo: #38BDF8;
-    --color-fondo-formulario: #FFFFFF;
-    --color-fondo-formulario-secundario: #E8F3FD;
-    --color-fondo-input: #FFFFFF;
-    --color-fondo-input-deshabilitado: #EAF4FE;
-    --color-fondo-archivo: #EAF4FE;
-    --color-fondo-boton-archivo: #D2E7FA;
-    --color-fondo-boton-archivo-hover: #B9D9F5;
-    --color-fondo-boton-secundario: #FFFFFF;
-    --color-fondo-boton-secundario-hover: #E1EFFD;
-    --color-fondo-mensaje-error: #FEF2F2;
-    --color-fondo-mensaje-exito: #F0FDF4;
-
-    --color-primario-oscuro: #204D78;
-    --color-primario: #1877C9;
-    --color-primario-hover: #125FA3;
-    --color-primario-claro: #7DD3FC;
-
-    --color-texto: #e4e7ec;
-    --color-texto-secundario: #e6eaed;
-    --color-texto-terciario: #e7edf4;
-    --color-texto-blanco: #FFFFFF;
-    --color-texto-input: #1E293B;
-    --color-texto-error: #B91C1C;
-    --color-texto-exito: #166534;
-
-    --color-borde: #D2E4F7;
-    --color-borde-encabezado: #315F8C;
-    --color-borde-input: #B6D0E8;
-    --color-borde-archivo: #8FB6DC;
-    --color-borde-boton-secundario-hover: #83B7E8;
-    --color-borde-error: #FECACA;
-    --color-borde-exito: #BBF7D0;
-
-    --color-sombra-formulario: rgb(32 77 120 / 7%);
-    --color-enfoque-input: rgb(24 119 201 / 13%);
-}
-
-/* Contenedor principal */
+/* Paleta exclusiva de esta página */
 
 body:has(#form-tratamiento) {
+    --color-fondo: #EAF3FA;
+    --color-fondo-encabezado: #102B46;
+    --color-borde-encabezado: #294B6A;
+    --color-fondo-logo: #087E9B;
+    --color-fondo-pie: #102B46;
+
+    --color-primario: #006B88;
+    --color-primario-hover: #004F68;
+    --color-primario-oscuro: #102B46;
+    --color-primario-claro: #8AD9EC;
+    --color-primario-resaltado: #00A6C7;
+
+    --color-texto: #182D42;
+    --color-texto-blanco: #FFFFFF;
+    --color-texto-secundario: #435C73;
+    --color-texto-terciario: #61788D;
+
+    --color-borde: #B6CCDE;
+    --color-borde-input: #829FB8;
+    --color-borde-archivo: #619CB9;
+
+    --color-fondo-formulario: #FFFFFF;
+    --color-fondo-formulario-secundario: #E5F1F9;
+    --color-sombra-formulario: rgba(16, 43, 70, 0.16);
+
+    --color-fondo-input: #F8FBFE;
+    --color-texto-input: #182D42;
+    --color-enfoque-input: rgba(0, 107, 136, 0.22);
+
+    --color-fondo-archivo: #E5F2FA;
+    --color-fondo-boton-archivo: #C9E3F2;
+    --color-fondo-boton-archivo-hover: #A9D2E8;
+
+    --color-borde-error: #D78B96;
+    --color-fondo-mensaje-error: #FFF0F1;
+    --color-texto-error: #942637;
+
+    --color-borde-exito: #75B99A;
+    --color-fondo-mensaje-exito: #E7F7EF;
+    --color-texto-exito: #17643F;
+
+    --color-fondo-boton-secundario: #DCEAF5;
+    --color-fondo-boton-secundario-hover: #C6DDEC;
+    --color-borde-boton-secundario-hover: #527D9F;
+
     box-sizing: border-box;
     min-height: 100vh;
     display: flex;
@@ -59,6 +61,7 @@ body:has(#form-tratamiento) {
     font-family: Arial, Helvetica, sans-serif;
     overflow-wrap: anywhere;
 }
+/* Contenedor principal */
 
 body:has(#form-tratamiento) *,
 body:has(#form-tratamiento) *::before,
@@ -559,4 +562,29 @@ body:has(#form-tratamiento) .pie-principal p {
     #form-tratamiento .acciones-formulario button {
         transition: none;
     }
+}
+/* Botón Volver al inicio del encabezado */
+body:has(#form-tratamiento) .encabezado-principal > a.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid #8AD9EC;
+    border-radius: 0.65rem;
+    background-color: #006B88;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+body:has(#form-tratamiento) .encabezado-principal > a.boton-secundario:hover {
+    border-color: #B4EAF5;
+    background-color: #004F68;
+    color: #FFFFFF;
+}
+
+body:has(#form-tratamiento) .encabezado-principal > a.boton-secundario:focus-visible {
+    outline: 3px solid #8AD9EC;
+    outline-offset: 3px;
 }
