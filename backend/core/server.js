@@ -30,6 +30,7 @@ class Server {
         this.app.use('/api/categorias-medicas', require('../routes/categoriasMedicas.route'));
         this.app.use('/api/secciones-medicas', require('../routes/seccionesMedicas.route'));
         this.app.use('/api/documentos', require('../routes/documentos.route'));
+        this.app.use('/api/tratamientos', require('../routes/tratamientos.route'));
 
         this.app.use((req, res, next) => {
             const error = new Error('Ruta no encontrada.');

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Registrá y organizá tus tratamientos médicos en TuSalud.">
+    <title>Guardar tratamiento | TuSalud</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <a class="logo" href="./inicio.html" aria-label="TuSalud, inicio">
+            <span class="logo__icono" aria-hidden="true">+</span>
+            <span>TuSalud</span>
+        </a>
+        <a href="./inicio.html" class="boton-secundario">Volver al inicio</a>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="bienvenida">
+            <span class="auth-etiqueta">MIS TRATAMIENTOS</span>
+            <h1>Registrar tratamiento</h1>
+            <p>Completá la información de tu medicamento para mantener tus tratamientos organizados en un solo lugar.</p>
+        </section>
+
+        <section class="formulario-contenedor">
+            <form id="form-tratamiento" enctype="multipart/form-data">
+                <h2>Información del medicamento</h2>
+
+                <div class="campo">
+                    <label for="nombre_medicamento">Nombre del medicamento *</label>
+                    <input
+                        type="text"
+                        id="nombre_medicamento"
+                        name="nombre_medicamento"
+                        maxlength="200"
+                        placeholder="Ej.: Ibuprofeno"
+                        required
+                    >
+                </div>
+
+                <div class="formulario-grid">
+                    <div class="campo">
+                        <label for="dosis">Dosis</label>
+                        <input
+                            type="text"
+                            id="dosis"
+                            name="dosis"
+                            maxlength="150"
+                            placeholder="Ej.: 400 mg"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="frecuencia">Frecuencia</label>
+                        <input
+                            type="text"
+                            id="frecuencia"
+                            name="frecuencia"
+                            maxlength="200"
+                            placeholder="Ej.: Cada 8 horas"
+                        >
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="via_administracion">Vía de administración</label>
+                    <select id="via_administracion" name="via_administracion">
+                        <option value="">Seleccioná una opción</option>
+                        <option value="Oral">Oral</option>
+                        <option value="Tópica">Tópica (sobre la piel)</option>
+                        <option value="Inyectable">Inyectable</option>
+                        <option value="Inhalatoria">Inhalatoria</option>
+                        <option value="Sublingual">Sublingual</option>
+                        <option value="Oftálmica">Oftálmica (ojos)</option>
+                        <option value="Ótica">Ótica (oídos)</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+
+                <h2>Duración del tratamiento</h2>
+
+                <div class="formulario-grid">
+                    <div class="campo">
+                        <label for="fecha_inicio">Fecha de inicio *</label>
+                        <input
+                            type="date"
+                            id="fecha_inicio"
+                            name="fecha_inicio"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="fecha_fin">Fecha de finalización</label>
+                        <input
+                            type="date"
+                            id="fecha_fin"
+                            name="fecha_fin"
+                        >
+                        <small>Dejá este campo vacío si no tenés una fecha de finalización registrada.</small>
+                    </div>
+                </div>
+
+                <h2>Información adicional</h2>
+
+                <div class="formulario-grid">
+                    <div class="campo">
+                        <label for="medico">Médico o profesional</label>
+                        <input
+                            type="text"
+                            id="medico"
+                            name="medico"
+                            maxlength="200"
+                            placeholder="Nombre del profesional"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="centro_medico">Centro médico</label>
+                        <input
+                            type="text"
+                            id="centro_medico"
+                            name="centro_medico"
+                            maxlength="200"
+                            placeholder="Hospital, clínica o consultorio"
+                        >
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="motivo">Motivo del tratamiento</label>
+                    <textarea
+                        id="motivo"
+                        name="motivo"
+                        rows="3"
+                        placeholder="¿Para qué te indicaron este medicamento?"
+                    ></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="indicaciones">Indicaciones adicionales</label>
+                    <textarea
+                        id="indicaciones"
+                        name="indicaciones"
+                        rows="3"
+                        placeholder="Anotá las indicaciones que te dieron."
+                    ></textarea>
+                </div>
+
+                <h2>Archivos adjuntos</h2>
+                <p class="texto-ayuda">Podés adjuntar una imagen del medicamento y una foto o archivo de la receta para tenerlos junto a la información del tratamiento.</p>
+
+                <div class="campo">
+                    <label for="imagen">Imagen del medicamento</label>
+                    <input
+                        type="file"
+                        id="imagen"
+                        name="imagen"
+                        accept="image/jpeg,image/png"
+                    >
+                    <small>Formatos permitidos: JPG o PNG. Tamaño máximo: 10 MB.</small>
+                </div>
+
+                <div class="campo">
+                    <label for="receta">Receta médica</label>
+                    <input
+                        type="file"
+                        id="receta"
+                        name="receta"
+                        accept="image/jpeg,image/png,application/pdf"
+                    >
+                    <small>Formatos permitidos: JPG, PNG o PDF. Tamaño máximo: 10 MB.</small>
+                </div>
+
+                <p id="mensaje-tratamiento" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
+
+                <div class="acciones-formulario">
+                    <a href="./inicio.html" class="boton-secundario">Cancelar</a>
+                    <button type="submit" id="boton-guardar-tratamiento" class="boton-principal">
+                        Guardar tratamiento
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-principal">
+        <p>TuSalud · Tu información, a tu alcance.</p>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/guardar-tratamiento.js"></script>
+</body>
+</html>

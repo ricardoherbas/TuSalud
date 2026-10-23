@@ -1,7 +1,8 @@
 fastapi
 uvicorn[standard]
 python-multipart
-pytesseract
-Pillow
+pillow
 pypdf
 pdf2image
+numpy
+python-doctr[torch]

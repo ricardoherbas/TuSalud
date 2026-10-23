@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Consultá tus tratamientos médicos registrados en TuSalud.">
+    <title>Mis tratamientos | TuSalud</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <a class="logo" href="./inicio.html" aria-label="TuSalud, inicio">
+            <span class="logo__icono" aria-hidden="true">+</span>
+            <span>TuSalud</span>
+        </a>
+        <a href="./inicio.html" class="boton-secundario">Volver al inicio</a>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="bienvenida">
+            <span class="auth-etiqueta">MI INFORMACIÓN MÉDICA</span>
+            <h1>Mis tratamientos</h1>
+            <p>Consultá tus medicamentos registrados y revisá la información de cada tratamiento.</p>
+        </section>
+
+        <section class="tratamientos-seccion" aria-labelledby="titulo-lista-tratamientos">
+            <div class="tratamientos-seccion__encabezado">
+                <div>
+                    <h2 id="titulo-lista-tratamientos">Tratamientos registrados</h2>
+                    <p>Seleccioná un tratamiento para ver sus detalles.</p>
+                </div>
+                <button type="button" id="boton-actualizar" class="boton-secundario">
+                    Actualizar lista
+                </button>
+            </div>
+
+            <div class="tratamientos-referencias" aria-label="Referencias de estado">
+                <span class="tratamiento-estado tratamiento-estado--vigente">
+                    No vencido según fecha
+                </span>
+                <span class="tratamiento-estado tratamiento-estado--vencido">
+                    Vencido según fecha
+                </span>
+                <span class="tratamiento-estado tratamiento-estado--sin-fecha">
+                    Sin fecha de finalización
+                </span>
+            </div>
+
+            <p
+                id="mensaje-tratamientos"
+                class="mensaje-formulario"
+                role="alert"
+                aria-live="polite"
+                hidden
+            ></p>
+
+            <div id="lista-tratamientos" class="lista-tratamientos" aria-live="polite">
+                <p>Cargando tratamientos...</p>
+            </div>
+        </section>
+
+        <section
+            id="detalle-tratamiento"
+            class="detalle-tratamiento"
+            aria-label="Detalle del tratamiento seleccionado"
+            hidden
+        ></section>
+
+        <div class="acciones-formulario">
+            <a href="./guardar-tratamiento.html" class="boton-principal">
+                + Registrar tratamiento
+            </a>
+        </div>
+    </main>
+
+    <!-- Ventana modal para visualizar imágenes y recetas -->
+    <div id="modal-archivo" class="modal-archivo" hidden>
+        <div
+            class="modal-archivo__contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-archivo-titulo"
+        >
+            <div class="modal-archivo__encabezado">
+                <h2 id="modal-archivo-titulo">Archivo adjunto</h2>
+                <button
+                    type="button"
+                    id="cerrar-modal-archivo"
+                    class="modal-archivo__cerrar"
+                    aria-label="Cerrar ventana"
+                >×</button>
+            </div>
+            <div id="modal-archivo-cuerpo" class="modal-archivo__cuerpo"></div>
+        </div>
+    </div>
+
+    <footer class="pie-principal">
+        <p>TuSalud · Tu información, a tu alcance.</p>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/mis-tratamientos.js"></script>
+</body>
+</html>

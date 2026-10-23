@@ -7,7 +7,6 @@ const verificarToken = require('../middlewares/auth.middleware');
 
 router.post('/registro', validarCrearUsuario, usuariosController.registrarUsuario);
 router.post('/login', usuariosController.iniciarSesion);
-
 router.get('/perfil', verificarToken, usuariosController.obtenerPerfil);
 router.put('/perfil', verificarToken, validarActualizarUsuario, usuariosController.actualizarPerfil);
 

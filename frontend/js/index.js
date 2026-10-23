@@ -26,7 +26,7 @@ formularioLogin.addEventListener('submit', async (evento) => {
             JSON.stringify(respuesta.data.usuario)
         );
 
-        window.location.href = './pages/categorias.html';
+        window.location.href = './pages/inicio.html';
     } catch (error) {
         mensajeLogin.textContent = error.status === 401
             ? 'El correo electrónico o la contraseña son incorrectos.'

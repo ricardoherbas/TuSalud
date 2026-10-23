@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Menú principal de TuSalud. Organizá tus documentos médicos y tratamientos.">
+    <title>Inicio | TuSalud</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <a class="logo" href="./inicio.html" aria-label="TuSalud, inicio">
+            <span class="logo__icono" aria-hidden="true">+</span>
+            <span>TuSalud</span>
+        </a>
+        <button type="button" id="boton-cerrar-sesion" class="boton-secundario">
+            Cerrar sesión
+        </button>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="bienvenida">
+            <span class="auth-etiqueta">TU SALUD, EN UN SOLO LUGAR</span>
+            <h1 id="saludo-usuario">¡Bienvenido a TuSalud!</h1>
+            <p>¿Qué necesitás hacer hoy? Elegí una opción para organizar tu información médica.</p>
+        </section>
+
+        <section class="menu-principal" aria-label="Opciones principales">
+            <a href="./categorias.html" class="tarjeta-menu">
+                <span class="tarjeta-menu__icono" aria-hidden="true">📁</span>
+                <h2>Guardar informes</h2>
+                <p>Organizá tus estudios, análisis de laboratorio e informes médicos por parte del cuerpo.</p>
+                <span class="tarjeta-menu__accion">Ver categorías <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="./guardar-tratamiento.html" class="tarjeta-menu">
+                <span class="tarjeta-menu__icono" aria-hidden="true">💊</span>
+                <h2>Guardar tratamientos</h2>
+                <p>Registrá tus medicamentos, dosis, frecuencia, fechas e información de tus recetas.</p>
+                <span class="tarjeta-menu__accion">Registrar tratamiento <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="./mis-tratamientos.html" class="tarjeta-menu">
+                <span class="tarjeta-menu__icono" aria-hidden="true">📋</span>
+                <h2>Mis tratamientos</h2>
+                <p>Consultá tus medicamentos registrados y revisá sus fechas de inicio y finalización.</p>
+                <span class="tarjeta-menu__accion">Consultar tratamientos <span aria-hidden="true">→</span></span>
+            </a>
+        </section>
+
+        <p id="mensaje-inicio" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
+    </main>
+
+    <footer class="pie-principal">
+        <p>TuSalud · Tu información, a tu alcance.</p>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/inicio.js"></script>
+</body>
+</html>

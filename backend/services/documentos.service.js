@@ -1,4 +1,4 @@
-const conexionDB = require('../config/conexion-db');
+const pool = require('../config/conexion-db');
 
 const crearDocumento = async ({
     usuarioId,
@@ -29,11 +29,21 @@ const crearDocumento = async ({
             tamano_bytes,
             hash_sha256
         )
-        VALUES (
-            $1, $2, $3, $4, $5, $6,
-            $7, $8, $9, $10, $11, $12
-        )
-        RETURNING *;
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+        RETURNING
+            id,
+            usuario_id,
+            categoria_id,
+            seccion_id,
+            titulo,
+            nombre_archivo_original,
+            fecha_documento,
+            institucion,
+            profesional,
+            tipo_mime,
+            tamano_bytes,
+            creado_en,
+            actualizado_en
     `;
 
     const valores = [
@@ -42,16 +52,16 @@ const crearDocumento = async ({
         seccionId,
         titulo,
         nombreArchivoOriginal,
-        fechaDocumento ?? null,
-        institucion ?? null,
-        profesional ?? null,
+        fechaDocumento || null,
+        institucion || null,
+        profesional || null,
         storageKey,
         tipoMime,
         tamanoBytes,
-        hashSha256 ?? null
+        hashSha256 || null
     ];
 
-    const resultado = await conexionDB.query(consulta, valores);
+    const resultado = await pool.query(consulta, valores);
 
     return resultado.rows[0];
 };
@@ -81,10 +91,10 @@ const obtenerDocumentosPorUsuario = async (usuarioId) => {
         INNER JOIN secciones_medicas AS s
             ON s.id = d.seccion_id
         WHERE d.usuario_id = $1
-        ORDER BY d.fecha_documento DESC NULLS LAST, d.creado_en DESC;
+        ORDER BY d.creado_en DESC
     `;
 
-    const resultado = await conexionDB.query(consulta, [usuarioId]);
+    const resultado = await pool.query(consulta, [usuarioId]);
 
     return resultado.rows;
 };
@@ -119,10 +129,11 @@ const obtenerDocumentoPorId = async (id, usuarioId) => {
         INNER JOIN secciones_medicas AS s
             ON s.id = d.seccion_id
         WHERE d.id = $1
-          AND d.usuario_id = $2;
+          AND d.usuario_id = $2
+        LIMIT 1
     `;
 
-    const resultado = await conexionDB.query(consulta, [id, usuarioId]);
+    const resultado = await pool.query(consulta, [id, usuarioId]);
 
     return resultado.rows[0] || null;
 };
@@ -131,10 +142,11 @@ const obtenerNombreSeccion = async (seccionId) => {
     const consulta = `
         SELECT nombre
         FROM secciones_medicas
-        WHERE id = $1;
+        WHERE id = $1
+        LIMIT 1
     `;
 
-    const resultado = await conexionDB.query(consulta, [seccionId]);
+    const resultado = await pool.query(consulta, [seccionId]);
 
     return resultado.rows[0]?.nombre || null;
 };
@@ -142,17 +154,16 @@ const obtenerNombreSeccion = async (seccionId) => {
 const guardarTextoOcr = async (id, usuarioId, textoOcr) => {
     const consulta = `
         UPDATE documentos
-        SET texto_ocr = $1,
-            actualizado_en = CURRENT_TIMESTAMP
-        WHERE id = $2
-          AND usuario_id = $3
-        RETURNING *;
+        SET texto_ocr = $3
+        WHERE id = $1
+          AND usuario_id = $2
+        RETURNING id, texto_ocr, actualizado_en
     `;
 
-    const resultado = await conexionDB.query(consulta, [
-        textoOcr,
+    const resultado = await pool.query(consulta, [
         id,
-        usuarioId
+        usuarioId,
+        textoOcr
     ]);
 
     return resultado.rows[0] || null;
@@ -172,14 +183,15 @@ const actualizarDocumento = async (
 ) => {
     const consulta = `
         UPDATE documentos
-        SET categoria_id = $1,
-            seccion_id = $2,
-            titulo = $3,
-            fecha_documento = $4,
-            institucion = $5,
-            profesional = $6
-        WHERE id = $7
-          AND usuario_id = $8
+        SET
+            categoria_id = $3,
+            seccion_id = $4,
+            titulo = $5,
+            fecha_documento = $6,
+            institucion = $7,
+            profesional = $8
+        WHERE id = $1
+          AND usuario_id = $2
         RETURNING
             id,
             categoria_id,
@@ -188,21 +200,21 @@ const actualizarDocumento = async (
             fecha_documento,
             institucion,
             profesional,
-            actualizado_en;
+            actualizado_en
     `;
 
     const valores = [
+        id,
+        usuarioId,
         categoriaId,
         seccionId,
         titulo,
-        fechaDocumento ?? null,
-        institucion ?? null,
-        profesional ?? null,
-        id,
-        usuarioId
+        fechaDocumento || null,
+        institucion || null,
+        profesional || null
     ];
 
-    const resultado = await conexionDB.query(consulta, valores);
+    const resultado = await pool.query(consulta, valores);
 
     return resultado.rows[0] || null;
 };
@@ -212,10 +224,92 @@ const eliminarDocumento = async (id, usuarioId) => {
         DELETE FROM documentos
         WHERE id = $1
           AND usuario_id = $2
-        RETURNING id, storage_key;
+        RETURNING id, storage_key
     `;
 
-    const resultado = await conexionDB.query(consulta, [
+    const resultado = await pool.query(consulta, [
+        id,
+        usuarioId
+    ]);
+
+    return resultado.rows[0] || null;
+};
+
+/**
+ * Guarda el hash del token y la fecha de vencimiento.
+ * El token original nunca se almacena en la base de datos.
+ */
+const guardarComparticionDocumento = async (
+    id,
+    usuarioId,
+    tokenHash,
+    compartidoHasta
+) => {
+    const consulta = `
+        UPDATE documentos
+        SET
+            token_comparticion_hash = $3,
+            compartido_hasta = $4
+        WHERE id = $1
+          AND usuario_id = $2
+        RETURNING
+            id,
+            compartido_hasta
+    `;
+
+    const resultado = await pool.query(consulta, [
+        id,
+        usuarioId,
+        tokenHash,
+        compartidoHasta
+    ]);
+
+    return resultado.rows[0] || null;
+};
+
+/**
+ * Busca un documento compartido mediante el hash del token.
+ * Solo devuelve el documento si el enlace todavía está vigente.
+ */
+const obtenerDocumentoCompartidoPorTokenHash = async (tokenHash) => {
+    const consulta = `
+        SELECT
+            d.id,
+            d.titulo,
+            d.nombre_archivo_original,
+            d.fecha_documento,
+            d.institucion,
+            d.profesional,
+            d.storage_key,
+            d.tipo_mime,
+            d.texto_ocr,
+            d.compartido_hasta
+        FROM documentos AS d
+        WHERE d.token_comparticion_hash = $1
+          AND d.compartido_hasta > CURRENT_TIMESTAMP
+        LIMIT 1
+    `;
+
+    const resultado = await pool.query(consulta, [tokenHash]);
+
+    return resultado.rows[0] || null;
+};
+
+/**
+ * Revoca un enlace compartido.
+ */
+const revocarComparticionDocumento = async (id, usuarioId) => {
+    const consulta = `
+        UPDATE documentos
+        SET
+            token_comparticion_hash = NULL,
+            compartido_hasta = NULL
+        WHERE id = $1
+          AND usuario_id = $2
+        RETURNING id
+    `;
+
+    const resultado = await pool.query(consulta, [
         id,
         usuarioId
     ]);
@@ -230,5 +324,8 @@ module.exports = {
     obtenerNombreSeccion,
     guardarTextoOcr,
     actualizarDocumento,
-    eliminarDocumento
+    eliminarDocumento,
+    guardarComparticionDocumento,
+    obtenerDocumentoCompartidoPorTokenHash,
+    revocarComparticionDocumento
 };

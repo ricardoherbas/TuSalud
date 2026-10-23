@@ -1,3 +1,4 @@
+
 services:
   backend:
     build:
@@ -12,6 +13,7 @@ services:
       DB_HOST: ${DB_HOST_DOCKER}
       DB_PORT: ${DB_PORT_CONTAINER}
       OCR_SERVICE_URL: http://ocr:8000
+      QR_SERVICE_URL: http://qr:8000
     ports:
       - "${BACKEND_PORT_HOST}:${BACKEND_PORT_CONTAINER}"
     volumes:
@@ -20,6 +22,8 @@ services:
       db:
         condition: service_healthy
       ocr:
+        condition: service_healthy
+      qr:
         condition: service_healthy
 
   frontend:
@@ -30,6 +34,7 @@ services:
       - "${FRONTEND_PORT_HOST}:${FRONTEND_PORT_CONTAINER}"
     volumes:
       - ./frontend:/usr/share/nginx/html:ro
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - backend
 
@@ -51,6 +56,25 @@ services:
       timeout: 5s
       retries: 5
       start_period: 15s
+
+  qr:
+    build:
+      context: .
+      dockerfile: qr/Dockerfile
+    container_name: tusalud_qr
+    restart: unless-stopped
+    expose:
+      - "8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   db:
     image: ${POSTGRES_IMAGE}

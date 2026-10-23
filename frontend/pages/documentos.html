@@ -64,6 +64,44 @@
             </div>
         </section>
     </main>
+
+    <dialog id="modal-documento" class="modal-visor" aria-labelledby="titulo-modal-documento">
+        <div class="modal-visor__panel">
+            <header class="modal-visor__encabezado">
+                <div>
+                    <h2 id="titulo-modal-documento">Documento médico</h2>
+                    <p id="nombre-documento-visor"></p>
+                </div>
+                <button type="button" id="boton-cerrar-visor" class="modal-visor__cerrar" aria-label="Cerrar ventana">×</button>
+            </header>
+            <div id="controles-visor" class="controles-visor" hidden>
+                <button type="button" id="boton-ampliar">Ampliar +</button>
+                <button type="button" id="boton-reducir">Reducir −</button>
+                <button type="button" id="boton-restablecer-zoom">Tamaño original</button>
+            </div>
+            <div id="contenido-visor" class="modal-visor__contenido">
+                <p>Cargando...</p>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-qr" class="modal-visor modal-qr" aria-labelledby="titulo-modal-qr">
+        <div class="modal-visor__panel">
+            <header class="modal-visor__encabezado">
+                <div>
+                    <h2 id="titulo-modal-qr">Compartir documento médico</h2>
+                    <p id="nombre-documento-qr"></p>
+                </div>
+                <button type="button" id="boton-cerrar-qr" class="modal-visor__cerrar" aria-label="Cerrar ventana">×</button>
+            </header>
+            <div id="contenedor-qr" class="modal-visor__contenido" aria-live="polite">
+                <p>El código QR aparecerá aquí.</p>
+            </div>
+            <p id="mensaje-qr" role="status" aria-live="polite"></p>
+            <p class="modal-qr__aviso">El acceso será temporal. Compartí este código únicamente con el profesional que deba consultar el documento.</p>
+        </div>
+    </dialog>
+
     <script src="../js/config.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/documentos.js"></script>

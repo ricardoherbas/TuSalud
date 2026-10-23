@@ -35,21 +35,16 @@ CREATE TABLE categorias_secciones (
 
 CREATE TABLE documentos (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-
     usuario_id BIGINT NOT NULL
         REFERENCES usuarios(id) ON DELETE CASCADE,
-
     categoria_id BIGINT NOT NULL,
     seccion_id BIGINT NOT NULL,
-
     titulo VARCHAR(200) NOT NULL,
     nombre_archivo_original VARCHAR(255) NOT NULL,
     fecha_documento DATE,
     institucion VARCHAR(200),
     profesional VARCHAR(200),
-
     storage_key VARCHAR(255) NOT NULL UNIQUE,
-
     tipo_mime VARCHAR(100) NOT NULL
         CHECK (
             tipo_mime IN (
@@ -58,10 +53,8 @@ CREATE TABLE documentos (
                 'image/png'
             )
         ),
-
     tamano_bytes BIGINT NOT NULL
         CHECK (tamano_bytes > 0),
-
     hash_sha256 VARCHAR(64)
         CHECK (
             hash_sha256 IS NULL
@@ -70,10 +63,8 @@ CREATE TABLE documentos (
                 AND hash_sha256 ~ '^[a-fA-F0-9]{64}$'
             )
         ),
-
     texto_ocr TEXT,
     resumen_ia TEXT,
-
     token_comparticion_hash VARCHAR(64) UNIQUE
         CHECK (
             token_comparticion_hash IS NULL
@@ -82,15 +73,56 @@ CREATE TABLE documentos (
                 AND token_comparticion_hash ~ '^[a-fA-F0-9]{64}$'
             )
         ),
-
     compartido_hasta TIMESTAMPTZ,
-
     creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
     CONSTRAINT fk_documentos_categoria_seccion
         FOREIGN KEY (categoria_id, seccion_id)
         REFERENCES categorias_secciones (categoria_id, seccion_id)
+);
+
+CREATE TABLE tratamientos (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    usuario_id BIGINT NOT NULL
+        REFERENCES usuarios(id) ON DELETE CASCADE,
+    nombre_medicamento VARCHAR(200) NOT NULL,
+    dosis VARCHAR(150),
+    frecuencia VARCHAR(200),
+    via_administracion VARCHAR(100),
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE,
+    medico VARCHAR(200),
+    centro_medico VARCHAR(200),
+    motivo TEXT,
+    indicaciones TEXT,
+    creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_tratamientos_fechas
+        CHECK (
+            fecha_fin IS NULL
+            OR fecha_fin >= fecha_inicio
+        )
+);
+
+CREATE TABLE archivos_tratamientos (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tratamiento_id BIGINT NOT NULL
+        REFERENCES tratamientos(id) ON DELETE CASCADE,
+    nombre_archivo_original VARCHAR(255) NOT NULL,
+    storage_key VARCHAR(255) NOT NULL UNIQUE,
+    tipo_archivo VARCHAR(20) NOT NULL
+        CHECK (
+            tipo_archivo IN ('imagen', 'receta')
+        ),
+    tipo_mime VARCHAR(100) NOT NULL
+        CHECK (
+            tipo_mime IN (
+                'application/pdf',
+                'image/jpeg',
+                'image/png'
+            )
+        ),
+    creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE FUNCTION actualizar_actualizado_en()
@@ -108,6 +140,11 @@ EXECUTE FUNCTION actualizar_actualizado_en();
 
 CREATE TRIGGER trg_documentos_actualizado_en
 BEFORE UPDATE ON documentos
+FOR EACH ROW
+EXECUTE FUNCTION actualizar_actualizado_en();
+
+CREATE TRIGGER trg_tratamientos_actualizado_en
+BEFORE UPDATE ON tratamientos
 FOR EACH ROW
 EXECUTE FUNCTION actualizar_actualizado_en();
 

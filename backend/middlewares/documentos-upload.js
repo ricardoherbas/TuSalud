@@ -1,4 +1,3 @@
-
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
@@ -21,14 +20,24 @@ const almacenamiento = multer.diskStorage({
     filename: (req, file, callback) => {
         const extension = tiposPermitidos[file.mimetype];
 
+        if (!extension) {
+            return callback(
+                new Error('El tipo de archivo no está permitido.')
+            );
+        }
+
         callback(null, `${randomUUID()}${extension}`);
     }
 });
 
 const filtrarArchivo = (req, file, callback) => {
     if (!tiposPermitidos[file.mimetype]) {
-        const error = new Error('El archivo debe ser PDF, JPG o PNG.');
+        const error = new Error(
+            'El archivo debe ser PDF, JPG o PNG.'
+        );
+
         error.statusCode = 400;
+
         return callback(error);
     }
 
@@ -40,7 +49,7 @@ const upload = multer({
     fileFilter: filtrarArchivo,
     limits: {
         fileSize: 10 * 1024 * 1024,
-        files: 1
+        files: 2
     }
 });
 
