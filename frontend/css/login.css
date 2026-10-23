@@ -1,0 +1,717 @@
+/* =========================================
+   TuSalud - Inicio de sesión
+   Archivo: css/login.css
+========================================= */
+
+/* Paleta de colores de inicio de sesión */
+
+:root {
+    --color-fondo: #EDF5FD;
+    --color-fondo-panel: #FFFFFF;
+    --color-fondo-input: #F4F9FF;
+    --color-fondo-input-deshabilitado: #EAF1F8;
+
+    --color-primario-oscuro: #204D78;
+    --color-primario-intermedio: #24659C;
+    --color-primario: #1877C9;
+    --color-primario-hover: #125FA3;
+    --color-primario-claro: #7CC4F4;
+
+    --color-texto: #334155;
+    --color-texto-primario: #204D78;
+    --color-texto-secundario: #526D89;
+    --color-texto-terciario: #7890A8;
+    --color-texto-blanco: #FFFFFF;
+    --color-texto-presentacion: #EAF4FF;
+    --color-texto-pie: #DCEBFA;
+
+    --color-borde: #D2E4F7;
+    --color-borde-hover: #A9CBEA;
+    --color-borde-etiqueta: rgba(255, 255, 255, 0.24);
+    --color-borde-beneficio: rgba(255, 255, 255, 0.18);
+    --color-borde-decorativo: rgba(255, 255, 255, 0.16);
+
+    --color-fondo-etiqueta: rgba(255, 255, 255, 0.13);
+    --color-fondo-beneficio: rgba(255, 255, 255, 0.10);
+    --color-fondo-decorativo: rgba(255, 255, 255, 0.06);
+    --color-fondo-decorativo-secundario: rgba(255, 255, 255, 0.05);
+
+    --color-texto-beneficio-icono: #14532D;
+    --color-fondo-beneficio-icono: #BBF7D0;
+
+    --color-error: #B42318;
+    --color-fondo-error: #FFF1F0;
+    --color-borde-error: #FECACA;
+
+    --color-resplandor-primario: rgba(24, 119, 201, 0.12);
+    --color-resplandor-secundario: rgba(24, 119, 201, 0.10);
+    --color-sombra-contenedor: rgba(32, 77, 120, 0.12);
+    --color-sombra-contenedor-movil: rgba(32, 77, 120, 0.08);
+    --color-sombra-logo: rgba(15, 23, 42, 0.12);
+    --color-sombra-icono: rgba(24, 119, 201, 0.20);
+    --color-sombra-icono-hover: rgba(24, 119, 201, 0.28);
+    --color-enfoque-input: rgba(24, 119, 201, 0.12);
+}
+
+/* Contenedor de la página */
+
+.pagina-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(12px, 3vw, 32px);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(56, 189, 248, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            var(--color-resplandor-secundario),
+            transparent 30%
+        ),
+        var(--color-fondo);
+    overflow-x: hidden;
+}
+
+.pagina-auth *,
+.pagina-auth *::before,
+.pagina-auth *::after {
+    box-sizing: border-box;
+}
+
+/* Tarjeta principal */
+
+.auth-contenedor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    width: 100%;
+    max-width: 1100px;
+    min-width: 0;
+    min-height: 620px;
+    overflow: hidden;
+    background: var(--color-fondo-panel);
+    border: 1px solid var(--color-borde);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px var(--color-sombra-contenedor);
+}
+
+/* =========================================
+   Panel de presentación
+========================================= */
+
+.auth-presentacion {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    min-width: 0;
+    padding: clamp(28px, 5vw, 56px);
+    overflow: hidden;
+    color: var(--color-texto-blanco);
+    background: linear-gradient(
+        145deg,
+        var(--color-primario-oscuro) 0%,
+        var(--color-primario-intermedio) 55%,
+        var(--color-primario) 100%
+    );
+}
+
+.auth-presentacion::before,
+.auth-presentacion::after {
+    position: absolute;
+    z-index: 0;
+    content: "";
+    pointer-events: none;
+    border: 1px solid var(--color-borde-decorativo);
+    border-radius: 50%;
+}
+
+.auth-presentacion::before {
+    top: -130px;
+    right: -130px;
+    width: 350px;
+    height: 350px;
+    background: var(--color-fondo-decorativo);
+}
+
+.auth-presentacion::after {
+    right: -80px;
+    bottom: -180px;
+    width: 400px;
+    height: 400px;
+    background: var(--color-fondo-decorativo-secundario);
+}
+
+.auth-presentacion > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 11px;
+    width: fit-content;
+    max-width: 100%;
+    color: var(--color-texto-blanco);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.logo:hover {
+    color: var(--color-texto-blanco);
+    opacity: 0.9;
+}
+
+.logo__icono {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: var(--color-primario-oscuro);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    background: var(--color-fondo-panel);
+    border-radius: 14px;
+    box-shadow: 0 5px 15px var(--color-sombra-logo);
+}
+
+/* Contenido de presentación */
+
+.auth-presentacion__contenido {
+    max-width: 440px;
+    min-width: 0;
+    margin-block: auto;
+    padding-block: 28px;
+}
+
+.auth-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    margin-bottom: 22px;
+    padding: 8px 13px;
+    color: var(--color-texto-blanco);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    background: var(--color-fondo-etiqueta);
+    border: 1px solid var(--color-borde-etiqueta);
+    border-radius: 999px;
+    overflow-wrap: anywhere;
+}
+
+.auth-presentacion h1 {
+    max-width: 430px;
+    margin: 0 0 22px;
+    font-size: clamp(2rem, 3.3vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    overflow-wrap: anywhere;
+}
+
+.auth-presentacion__contenido > p {
+    max-width: 410px;
+    margin: 0 0 30px;
+    color: var(--color-texto-presentacion);
+    font-size: 1rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Beneficios */
+
+.auth-beneficio {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    margin-top: 15px;
+    padding: 13px 15px;
+    color: var(--color-texto-blanco);
+    font-size: 0.93rem;
+    line-height: 1.6;
+    background: var(--color-fondo-beneficio);
+    border: 1px solid var(--color-borde-beneficio);
+    border-radius: 14px;
+    overflow-wrap: anywhere;
+}
+
+.auth-beneficio__icono {
+    display: inline-flex;
+    flex: 0 0 28px;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--color-texto-beneficio-icono);
+    font-size: 0.95rem;
+    font-weight: 900;
+    background: var(--color-fondo-beneficio-icono);
+    border-radius: 50%;
+}
+
+/* Pie del panel */
+
+.auth-presentacion__pie {
+    margin: 0;
+    color: var(--color-texto-pie);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   Panel del formulario
+========================================= */
+
+.auth-formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: clamp(26px, 5vw, 56px);
+    background: var(--color-fondo-panel);
+}
+
+.auth-formulario__contenido {
+    width: 100%;
+    max-width: 390px;
+    min-width: 0;
+}
+
+/* Encabezado */
+
+.auth-formulario__encabezado {
+    margin-bottom: 34px;
+    text-align: center;
+}
+
+.auth-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin-bottom: 19px;
+    color: var(--color-texto-blanco);
+    font-size: 1.8rem;
+    background: linear-gradient(
+        135deg,
+        var(--color-primario-oscuro),
+        var(--color-primario)
+    );
+    border-radius: 20px;
+    box-shadow: 0 10px 22px var(--color-sombra-icono);
+}
+
+.auth-formulario__encabezado h2 {
+    margin: 0 0 8px;
+    color: var(--color-primario-oscuro);
+    font-size: clamp(1.65rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.6px;
+    overflow-wrap: anywhere;
+}
+
+.auth-formulario__encabezado p {
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   Formulario y campos
+========================================= */
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    min-width: 0;
+}
+
+#form-login .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+#form-login .campo label {
+    color: var(--color-texto);
+    font-size: 0.9rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+#form-login .campo input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    padding: 13px 15px;
+    color: var(--color-texto-primario);
+    font-size: 16px;
+    background: var(--color-fondo-input);
+    border: 1px solid var(--color-borde);
+    border-radius: 13px;
+    outline: none;
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+#form-login .campo input::placeholder {
+    color: var(--color-texto-terciario);
+    opacity: 1;
+}
+
+#form-login .campo input:hover {
+    border-color: var(--color-borde-hover);
+}
+
+#form-login .campo input:focus {
+    background: var(--color-fondo-panel);
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 4px var(--color-enfoque-input);
+}
+
+#form-login .campo input:disabled {
+    cursor: not-allowed;
+    background: var(--color-fondo-input-deshabilitado);
+    opacity: 0.7;
+}
+
+/* =========================================
+   Botón de inicio de sesión
+========================================= */
+
+#boton-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 53px;
+    padding: 14px 20px;
+    color: var(--color-texto-blanco);
+    font-size: 0.98rem;
+    font-weight: 750;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+    background: linear-gradient(
+        110deg,
+        var(--color-primario-oscuro),
+        var(--color-primario)
+    );
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px var(--color-sombra-icono);
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+
+#boton-login:hover:not(:disabled) {
+    box-shadow: 0 11px 24px var(--color-sombra-icono-hover);
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+#boton-login:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#boton-login:focus-visible {
+    outline: 3px solid var(--color-primario-claro);
+    outline-offset: 4px;
+}
+
+#boton-login:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.65;
+}
+
+/* =========================================
+   Mensajes de error
+========================================= */
+
+#mensaje-login {
+    max-width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    color: var(--color-error);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    background: var(--color-fondo-error);
+    border: 1px solid var(--color-borde-error);
+    border-radius: 12px;
+}
+
+#mensaje-login[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   Enlace para crear una cuenta
+========================================= */
+
+.auth-alternativa {
+    margin: 28px 0 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.auth-alternativa a {
+    color: var(--color-primario);
+    font-weight: 750;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.auth-alternativa a:hover {
+    color: var(--color-primario-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.auth-alternativa a:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* =========================================
+   Diseño adaptable: tablets
+========================================= */
+
+@media (max-width: 900px) {
+    .pagina-auth {
+        padding: 22px;
+    }
+
+    .auth-contenedor {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 720px;
+        min-height: auto;
+    }
+
+    .auth-presentacion {
+        gap: 25px;
+        padding: 34px;
+    }
+
+    .auth-presentacion__contenido {
+        max-width: 560px;
+        padding-block: 12px;
+    }
+
+    .auth-presentacion h1 {
+        max-width: 550px;
+        font-size: clamp(2rem, 5vw, 2.7rem);
+    }
+
+    .auth-presentacion__contenido > p {
+        max-width: 550px;
+    }
+
+    .auth-presentacion__pie {
+        margin-top: 4px;
+    }
+
+    .auth-formulario {
+        padding: 38px 30px;
+    }
+
+    .auth-formulario__contenido {
+        max-width: 460px;
+    }
+}
+
+/* =========================================
+   Diseño adaptable: celulares
+========================================= */
+
+@media (max-width: 600px) {
+    .pagina-auth {
+        display: block;
+        min-height: 100vh;
+        padding: 12px;
+    }
+
+    .auth-contenedor {
+        width: 100%;
+        min-height: auto;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px var(--color-sombra-contenedor-movil);
+    }
+
+    .auth-presentacion {
+        gap: 24px;
+        padding: 25px 22px;
+    }
+
+    .logo {
+        gap: 9px;
+        font-size: 1.3rem;
+    }
+
+    .logo__icono {
+        width: 38px;
+        height: 38px;
+        font-size: 1.8rem;
+        border-radius: 12px;
+    }
+
+    .auth-presentacion__contenido {
+        padding-block: 5px;
+    }
+
+    .auth-etiqueta {
+        margin-bottom: 16px;
+        padding: 7px 10px;
+        font-size: 0.65rem;
+        letter-spacing: 0.8px;
+    }
+
+    .auth-presentacion h1 {
+        margin-bottom: 15px;
+        font-size: clamp(1.8rem, 8vw, 2.35rem);
+        letter-spacing: -0.8px;
+    }
+
+    .auth-presentacion__contenido > p {
+        margin-bottom: 20px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+    }
+
+    .auth-beneficio {
+        gap: 10px;
+        margin-top: 10px;
+        padding: 11px;
+        font-size: 0.84rem;
+    }
+
+    .auth-beneficio__icono {
+        flex-basis: 25px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .auth-presentacion__pie {
+        font-size: 0.75rem;
+    }
+
+    .auth-formulario {
+        padding: 30px 22px;
+    }
+
+    .auth-formulario__encabezado {
+        margin-bottom: 26px;
+    }
+
+    .auth-icono {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 15px;
+        border-radius: 17px;
+    }
+
+    .auth-formulario__encabezado h2 {
+        font-size: 1.65rem;
+    }
+
+    #form-login {
+        gap: 18px;
+    }
+
+    #form-login .campo input {
+        min-height: 50px;
+        padding: 12px;
+    }
+
+    #boton-login {
+        min-height: 51px;
+    }
+
+    .auth-alternativa {
+        margin-top: 23px;
+        font-size: 0.85rem;
+    }
+}
+
+/* =========================================
+   Celulares pequeños
+========================================= */
+
+@media (max-width: 360px) {
+    .pagina-auth {
+        padding: 8px;
+    }
+
+    .auth-presentacion,
+    .auth-formulario {
+        padding: 22px 16px;
+    }
+
+    .auth-presentacion h1 {
+        font-size: 1.75rem;
+    }
+
+    .auth-etiqueta {
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+    }
+
+    .auth-beneficio {
+        align-items: flex-start;
+    }
+}
+
+/* =========================================
+   Accesibilidad
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .pagina-auth *,
+    .pagina-auth *::before,
+    .pagina-auth *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

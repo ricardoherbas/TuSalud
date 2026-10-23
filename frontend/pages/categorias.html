@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f4f7fb">
+    <meta name="theme-color" content="#EDF5FD">
     <meta name="description" content="Organizá y consultá tus documentos médicos en TuSalud.">
     <title>Mis categorías médicas | TuSalud</title>
     <link rel="stylesheet" href="../css/styles.css">
@@ -15,41 +14,79 @@
             <span class="logo__icono" aria-hidden="true">+</span>
             <span>TuSalud</span>
         </a>
+
         <nav class="navegacion" aria-label="Navegación principal">
             <span id="nombre-usuario" class="nombre-usuario"></span>
-            <button type="button" id="boton-cerrar-sesion">Cerrar sesión</button>
+
+            <a href="./inicio.html" class="boton-volver-inicio">
+                ← Volver al inicio
+            </a>
+
+            <button type="button" id="boton-cerrar-sesion">
+                Cerrar sesión
+            </button>
         </nav>
     </header>
+
     <main class="contenedor-principal">
         <section class="bienvenida" aria-labelledby="titulo-principal">
             <p class="bienvenida__etiqueta">TU ESPACIO DE SALUD</p>
             <h1 id="titulo-principal">Tus documentos, organizados.</h1>
             <p>Elegí una categoría para encontrar tus estudios, informes y análisis médicos.</p>
         </section>
-        <section id="seccion-categorias" class="seccion-categorias" aria-labelledby="titulo-categorias">
+
+        <section
+            id="seccion-categorias"
+            class="seccion-categorias"
+            aria-labelledby="titulo-categorias"
+        >
             <div class="seccion-categorias__encabezado">
                 <div>
                     <h2 id="titulo-categorias">Categorías médicas</h2>
                     <p>¿Qué parte del cuerpo o área de salud querés consultar?</p>
                 </div>
             </div>
+
             <div id="lista-categorias" class="lista-categorias">
                 <p class="mensaje-carga">Cargando categorías médicas...</p>
             </div>
         </section>
-        <section id="seccion-secciones" class="seccion-documentos" aria-labelledby="titulo-secciones" hidden>
-            <button type="button" id="boton-volver" class="boton-volver">← Volver a las categorías</button>
+
+        <section
+            id="seccion-secciones"
+            class="seccion-documentos"
+            aria-labelledby="titulo-secciones"
+            hidden
+        >
+            <button
+                type="button"
+                id="boton-volver"
+                class="boton-volver"
+            >
+                ← Volver a las categorías
+            </button>
+
             <h2 id="titulo-secciones">Secciones médicas</h2>
             <p id="descripcion-secciones">Elegí el tipo de documento que querés consultar.</p>
+
             <div id="lista-secciones" class="lista-secciones">
                 <p class="mensaje-carga">Cargando secciones...</p>
             </div>
         </section>
-        <p id="mensaje-categorias" class="mensaje-formulario" role="alert" aria-live="polite" hidden></p>
+
+        <p
+            id="mensaje-categorias"
+            class="mensaje-formulario"
+            role="alert"
+            aria-live="polite"
+            hidden
+        ></p>
     </main>
+
     <footer class="pie-pagina">
         <p>TuSalud · Tu información, a tu alcance.</p>
     </footer>
+
     <script src="../js/config.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/categorias.js"></script>
